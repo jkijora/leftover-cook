@@ -1,17 +1,31 @@
 package eu.kijora.leftovercook.bo;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Ingredient {
+import javax.persistence.*;
 
+@Entity
+public @Data class Ingredient {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Column
     @Getter @Setter
     private String name;
+
+    @Column
     @Getter @Setter
     private boolean vegan;
+
+    @Transient
     @Getter @Setter
     private Priority priority;
 
+    public Ingredient(){};
 
     public Ingredient(String name) {
         this.name = name;
