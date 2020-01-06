@@ -4,27 +4,24 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
+@Entity
+public @Data class Recipe {
 
-public  class Recipe {
-
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
-//    @Column
     @Getter @Setter
     String name;
 
     @Getter @Setter
-    List<Ingredient> ingredients;
+    @ManyToMany(mappedBy = "recipes")
+    Set<Ingredient> ingredients;
 
-//    @Column
     @Getter @Setter
     String linkToWeb;
 
