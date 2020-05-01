@@ -1,6 +1,7 @@
 package eu.kijora.leftovercook.logic;
 
 import eu.kijora.leftovercook.bo.Ingredient;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
+@Slf4j
 public class RecipeController {
 
     @Autowired
@@ -22,6 +24,7 @@ public class RecipeController {
 
     @GetMapping(value = "/")
     public String defaultWelcome() {
+        log.debug("Main endpoint hit");
         return "Welcome";
     }
 
